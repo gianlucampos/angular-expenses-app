@@ -1,0 +1,22 @@
+<h3>Add a new item to expenses</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.description }} </span>
+  <span>{{ item.valueSpent | currency }}</span>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="description"> Description </label>
+    <input id="description" type="text" formControlName="description">
+  </div>
+
+  <div>
+    <label for="valueSpent"> Value Spent </label>
+    <input id="valueSpent" type="text" formControlName="valueSpent">
+  </div>
+
+  <button class="button" type="submit">Register</button>
+
+</form>
