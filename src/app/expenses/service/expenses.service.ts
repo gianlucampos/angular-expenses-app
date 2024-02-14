@@ -1,25 +1,28 @@
 import {Injectable} from '@angular/core';
 import {ExpenseItem} from "../model/expense-item";
+import {StorageService} from "../../shared/service/storage.service";
+import {STORAGE_KEYS} from "../../config/storage-keys.config";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpensesService {
-  private items: ExpenseItem[] = [
-    {position: 1, description: 'Internet Claro', valueSpent: 207.00, category: 'Services'},
-    {position: 2, description: 'Gym', valueSpent: 110.00, category: 'Health'},
-  ]
+
+  constructor(private storageService: StorageService) {
+  }
 
   addToExpenses(item: ExpenseItem): void {
-    this.items.push(item);
+    item.position = this.getItems().length + 1;
+    item.valueSpent = +item.valueSpent;
+    this.storageService.saveExpenses(item);
   }
 
   getItems(): ExpenseItem[] {
-    return this.items;
+    return this.storageService.getExpenses();
   }
 
   clearExpenses(): void {
-    this.items = [];
+    this.storageService.clearData(STORAGE_KEYS.expenses);
   }
 
 }

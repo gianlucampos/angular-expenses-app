@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { ExpensesRoutingModule } from './expenses-routing.module';
+import {ExpensesRoutingModule} from './expenses-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    ExpensesRoutingModule
+    ExpensesRoutingModule,
   ]
 })
 export class ExpensesModule { }

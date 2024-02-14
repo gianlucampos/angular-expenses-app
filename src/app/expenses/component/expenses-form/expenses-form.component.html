@@ -1,22 +1,35 @@
-<h3>Add a new item to expenses</h3>
+<mat-card-header>
+  <h3>Add a new item to expenses</h3>
+</mat-card-header>
+<mat-card-header>
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
-<div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.description }} </span>
-  <span>{{ item.valueSpent | currency }}</span>
-</div>
+    <div>
+      <label for="description"> Description </label>
+      <input id="description" type="text" formControlName="description">
+      <div class="danger" *ngIf="checkoutForm.controls['description'].dirty && checkoutForm.controls['description'].errors ">
+        Valor inválido
+      </div>
+    </div>
+    <br>
+    <div>
+      <label for="category"> Category </label>
+      <input id="category" type="text" formControlName="category">
+      <div class="danger" *ngIf="checkoutForm.controls['category'].dirty && checkoutForm.controls['category'].errors ">
+        Valor inválido
+      </div>
+    </div>
+    <br>
+    <div>
+      <label for="valueSpent"> Value Spent </label>
+      <input id="valueSpent" type="text" formControlName="valueSpent">
+      <div class="danger" *ngIf="checkoutForm.controls['valueSpent'].dirty && checkoutForm.controls['valueSpent'].errors ">
+        Valor inválido
+      </div>
+    </div>
+    <br>
+    <button mat-raised-button color="accent" type="submit" [disabled]="checkoutForm.invalid">Register</button>
 
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  </form>
 
-  <div>
-    <label for="description"> Description </label>
-    <input id="description" type="text" formControlName="description">
-  </div>
-
-  <div>
-    <label for="valueSpent"> Value Spent </label>
-    <input id="valueSpent" type="text" formControlName="valueSpent">
-  </div>
-
-  <button class="button" type="submit">Register</button>
-
-</form>
+</mat-card-header>

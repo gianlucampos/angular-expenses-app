@@ -13,8 +13,8 @@
         </ng-container>
 
         <ng-container matColumnDef="valueSpent">
-          <th mat-header-cell *matHeaderCellDef> Value Spent R$</th>
-          <td mat-cell *matCellDef="let element"> {{ element["valueSpent"] }}</td>
+          <th mat-header-cell *matHeaderCellDef> Value Spent </th>
+          <td mat-cell *matCellDef="let element"> {{ element["valueSpent"] | currency}}</td>
         </ng-container>
 
         <ng-container matColumnDef="category">
